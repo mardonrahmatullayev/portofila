@@ -1,383 +1,329 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | Mardon Rahmatullayev</title>
-  <link rel="stylesheet" href="./style.css">
-  <nav>
-    <ul>
-      
-    <img src="./photo_2026-01-30_21-08-36.jpg" alt="" class="avatar">
-      <li><a href="#about">Men haqimda</a></li>
-      <li><a href="#skills">Ko‘nikmalar</a></li>
-      <li><a href="#projects">Loyihalar</a></li>
-      <li><a href="#experience">Tajriba</a></li>
-      <li><a href="#contact">Aloqa</a></li>
-    </ul>
-  </nav>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Roboto, Arial, sans-serif; }
-    body { background: #f5f7fb; color:#0f172a; line-height:1.6; scroll-behavior: smooth; }
-    a { text-decoration:none; color: inherit; }
-
-    /* Header */
-    header {
-      padding: 120px 20px 80px;
-      text-align: center;
-      background: linear-gradient(135deg, #6366f1, #a5b4fc), url('https://source.unsplash.com/1600x900/?code,tech') no-repeat center/cover;
-      color: #fff;
-      position: relative; 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mardon Rahmatullayev — Veb dasturchi</title>
+<meta name="description" content="Mardon Rahmatullayev — PHP, Laravel va MySQL bilan ishlaydigan veb dasturchi. Loyihalar, koʻnikmalar va aloqa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFF2F6;
+    --card:#FFFFFF;
+    --ink:#0E2237;
+    --muted:#4B6379;
+    --cobalt:#1B4FA0;
+    --turquoise:#1E8E96;
+    --saffron:#D98A1F;
+    --line:rgba(14,34,55,.14);
+    --pattern:rgba(27,79,160,.16);
+    --shadow:0 1px 0 rgba(14,34,55,.06);
+    --radius:4px;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    color-scheme:light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B1826;
+      --card:#122234;
+      --ink:#E6EDF5;
+      --muted:#9BB2C7;
+      --cobalt:#7EA9E6;
+      --turquoise:#54C4CB;
+      --saffron:#EBAF56;
+      --line:rgba(230,237,245,.16);
+      --pattern:rgba(126,169,230,.16);
+      --shadow:none;
     }
-    header h1 { font-size:3.4rem; margin-top:10px; letter-spacing:-0.03em; text-shadow: 1px 1px 8px rgba(0,0,0,0.3); }
-    header p { margin-top:12px; font-size:1.2rem; text-shadow: 1px 1px 6px rgba(0,0,0,0.2); }
-    .badge { display:inline-block; padding:6px 14px; border-radius:50px; background:#c7d2fe; color:#1e3a8a; font-weight:600; font-size:0.9rem; }
-    .cta { display:inline-block; margin-top:20px; padding:14px 24px; border-radius:12px; background:#1d4ed8; color:#fff; font-weight:700; transition:0.3s; }
-    .cta:hover { background:#2563eb; transform: translateY(-2px); }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B1826;
+    --card:#122234;
+    --ink:#E6EDF5;
+    --muted:#9BB2C7;
+    --cobalt:#7EA9E6;
+    --turquoise:#54C4CB;
+    --saffron:#EBAF56;
+    --line:rgba(230,237,245,.16);
+    --pattern:rgba(126,169,230,.16);
+    --shadow:none;
+  }
+  *,*::before,*::after{box-sizing:inherit}
+  html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px)}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Karla","Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%}
+  a{color:inherit}
+  .wrap{width:min(100% - 2.5rem, 62rem); margin-inline:auto}
 
-    /* Nav */
-    nav { position: sticky; top:0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom:1px solid #e5e7eb; }
-    nav ul { display:flex; justify-content:center; gap:25px; padding:14px 20px; list-style:none; flex-wrap:wrap; }
-    nav a { font-weight:600; color:#0f172a; position:relative; }
-    nav a::after { content:''; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:#1d4ed8; transition:0.3s; }
-    nav a:hover::after { width:100%; }
+  /* ---------- hero ---------- */
+  .hero{position:relative; overflow:hidden; padding:clamp(3.5rem,10vw,7rem) 0 clamp(2.5rem,6vw,4rem)}
+  .panjara{
+    position:absolute; inset:auto -10% 0 auto;
+    width:min(34rem,70vw); aspect-ratio:1/1;
+    opacity:.9; pointer-events:none;
+    -webkit-mask-image:radial-gradient(circle at 70% 30%, #000 25%, transparent 72%);
+    mask-image:radial-gradient(circle at 70% 30%, #000 25%, transparent 72%);
+  }
+  .hero .wrap{position:relative; z-index:1}
+  .status{
+    display:inline-flex; align-items:center; gap:.55rem;
+    font-size:.9rem; color:var(--muted); letter-spacing:.01em;
+    margin:0 0 1.2rem;
+  }
+  .dot{width:.5rem; height:.5rem; border-radius:50%; background:var(--saffron); flex:none}
+  h1{
+    font-family:"Bricolage Grotesque","Karla",sans-serif;
+    font-weight:800;
+    font-size:clamp(2.9rem,11.5vw,7rem);
+    line-height:.92;
+    letter-spacing:-.035em;
+    margin:0;
+  }
+  h1 .surname{display:block; color:var(--cobalt)}
+  .tagline{
+    max-width:34ch;
+    font-size:clamp(1.05rem,2.4vw,1.3rem);
+    line-height:1.5;
+    margin:1.6rem 0 0;
+    color:var(--muted);
+  }
+  .tagline strong{color:var(--ink); font-weight:700}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:.7rem; margin-top:2.2rem}
+  .btn{
+    display:inline-block; text-decoration:none;
+    padding:.72rem 1.35rem; border-radius:var(--radius);
+    font-weight:700; font-size:.97rem;
+    border:1.5px solid var(--cobalt);
+    transition:background-color .18s ease, color .18s ease;
+  }
+  .btn-solid{background:var(--cobalt); color:var(--paper)}
+  .btn-solid:hover{background:var(--turquoise); border-color:var(--turquoise)}
+  .btn-ghost{color:var(--cobalt)}
+  .btn-ghost:hover{background:var(--cobalt); color:var(--paper)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--saffron); outline-offset:3px; border-radius:2px}
 
-    /* Sections */
-    section { padding:80px 20px; max-width:1100px; margin:auto; }
-    h2 { font-size:2.4rem; margin-bottom:24px; color:#1e293b; }
-    p.lead { color:#475569; max-width:780px; margin-bottom:20px; }
+  /* ---------- sections ---------- */
+  section{padding-block:clamp(2.75rem,7vw,4.5rem)}
+  .rule{border:0; border-top:1px solid var(--line); margin:0}
+  h2{
+    font-family:"Bricolage Grotesque","Karla",sans-serif;
+    font-weight:600;
+    font-size:clamp(1.4rem,3.4vw,1.85rem);
+    letter-spacing:-.02em;
+    margin:0 0 1.75rem;
+  }
+  .split{display:grid; gap:clamp(1.25rem,4vw,3rem); grid-template-columns:1fr}
+  @media (min-width:52rem){ .split{grid-template-columns:14rem 1fr} }
+  .prose p{margin:0 0 1rem; max-width:66ch}
+  .prose p:last-child{margin-bottom:0}
 
-    /* Grid Cards */
-    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:24px; }
-    .card { background:#fff; border-radius:18px; box-shadow:0 12px 24px rgba(15,23,42,0.08); overflow:hidden; transition: transform 0.3s, box-shadow 0.3s; }
-    .card:hover { transform: translateY(-8px); box-shadow:0 16px 32px rgba(15,23,42,0.12); }
-    .card img { width:100%; height:180px; object-fit:cover; transition: transform 0.3s; }
-    .card:hover img { transform: scale(1.05); }
-    .card-content { padding:20px; }
-    .card h3 { margin-bottom:10px; color:#1e293b; }
-    .badge { margin-top:10px; display:inline-block; }
+  .facts{list-style:none; margin:1.9rem 0 0; padding:0; display:grid; gap:.1rem; max-width:32rem}
+  .facts li{display:flex; justify-content:space-between; gap:1rem; padding:.62rem 0; border-top:1px solid var(--line)}
+  .facts li:last-child{border-bottom:1px solid var(--line)}
+  .facts dfn{font-style:normal; color:var(--muted)}
+  .facts b{font-weight:700}
 
-    /* Timeline */
-    .timeline { border-left:3px solid #e5e7eb; padding-left:24px; position:relative; }
-    .timeline .item { margin-bottom:24px; position:relative; }
-    .timeline .item::before { content:''; position:absolute; left:-10px; top:0; width:20px; height:20px; background:#1d4ed8; border-radius:50%; }
+  /* ---------- skills ---------- */
+  .skills{margin:0; display:grid; gap:0}
+  .skill{
+    display:grid; gap:.15rem .9rem; align-items:baseline;
+    grid-template-columns:1fr; padding:.85rem 0;
+    border-top:1px solid var(--line);
+  }
+  .skill:last-child{border-bottom:1px solid var(--line)}
+  @media (min-width:40rem){ .skill{grid-template-columns:11rem 1fr auto} }
+  .skill dt{font-weight:700; font-size:1.02rem}
+  .skill dd{margin:0; color:var(--muted); font-size:.97rem}
+  .level{color:var(--turquoise); font-size:.9rem; font-weight:700; white-space:nowrap}
 
-    /* Footer */
-    footer { text-align:center; padding:40px 20px; background:#f8fafc; color:#475569; border-top:1px solid #e5e7eb; }
-    footer a { color:#1d4ed8; transition:0.3s; }
-    footer a:hover { text-decoration:underline; }
+  /* ---------- projects ---------- */
+  .project{
+    display:block; text-decoration:none;
+    background:var(--card); border:1px solid var(--line);
+    border-left:4px solid var(--cobalt);
+    border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:clamp(1.25rem,3.5vw,1.9rem);
+    margin-bottom:1rem;
+    transition:border-left-color .18s ease, transform .18s ease;
+  }
+  .project:last-child{margin-bottom:0}
+  .project:hover{border-left-color:var(--saffron)}
+  @media (prefers-reduced-motion: no-preference){ .project:hover{transform:translateY(-2px)} }
+  .project h3{
+    font-family:"Bricolage Grotesque","Karla",sans-serif;
+    font-size:clamp(1.25rem,3vw,1.6rem); font-weight:600; letter-spacing:-.02em;
+    margin:0 0 .5rem;
+  }
+  .project p{margin:0 0 1rem; color:var(--muted); max-width:60ch}
+  .stack{display:flex; flex-wrap:wrap; gap:.4rem; list-style:none; margin:0; padding:0}
+  .stack li{
+    font-size:.82rem; font-weight:700; letter-spacing:.02em;
+    color:var(--cobalt); border:1px solid var(--line);
+    border-radius:99px; padding:.18rem .7rem;
+  }
+  .visit{display:inline-block; margin-top:1.1rem; font-weight:700; color:var(--cobalt); border-bottom:2px solid var(--turquoise); padding-bottom:1px}
 
-    /* Responsive */
-    @media(max-width:600px){
-      header h1 { font-size:2.4rem; }
-      h2 { font-size:2rem; }
-      nav ul { flex-direction: column; gap:12px; }
-      .card img { height:150px; }
-    }
+  /* ---------- contact ---------- */
+  .contact{background:var(--card); border-top:1px solid var(--line)}
+  .links{list-style:none; margin:0; padding:0}
+  .links li{border-top:1px solid var(--line)}
+  .links li:last-child{border-bottom:1px solid var(--line)}
+  .links a{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:.35rem 1rem;
+    padding:1rem .25rem; text-decoration:none;
+    transition:padding-left .18s ease, color .18s ease;
+  }
+  .links a:hover{color:var(--cobalt); padding-left:.75rem}
+  .links .what{width:7rem; color:var(--muted); font-size:.95rem; flex:none}
+  .links .val{font-weight:700; font-size:1.05rem; word-break:break-word}
+  footer{padding:2rem 0 3rem; color:var(--muted); font-size:.9rem}
 
-    /* Scroll animation */
-    [data-animate] { opacity:0; transform:translateY(20px); transition:0.6s ease-out; }
-    [data-animate].active { opacity:1; transform:translateY(0); }
-  </style>
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{opacity:0; transform:translateY(14px); animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards}
+    .reveal:nth-child(2){animation-delay:.09s}
+    .reveal:nth-child(3){animation-delay:.18s}
+    .reveal:nth-child(4){animation-delay:.27s}
+    @keyframes rise{to{opacity:1; transform:none}}
+  }
+</style>
 </head>
 <body>
 
-<!-- Pro Version Portfolio Design -->
-<header>
-  <div class="container">
-    <h1>Mardon Rahmatullayev</h1>
-    <p>Full Stack Developer | Backend va Frontend yo‘nalishida real loyihalar qilaman</p>
-    <a class="cta" href="./image.png" download="Mardon_Rahmatullayev_Rezume.png">Yuklab olish</a>
-    <div class="social-icons">
-      <a href="https://github.com/mardonrahmatullayev" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-      <a href="https://t.me/mardon300" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
-      <a href="mailto:mardonrahmatullayev417@gmail.com"><i class="fas fa-envelope"></i></a>
+<header class="hero">
+  <svg class="panjara" viewBox="0 0 240 240" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="star" width="60" height="60" patternUnits="userSpaceOnUse">
+        <g fill="none" stroke="var(--pattern)" stroke-width="1.4">
+          <rect x="15" y="15" width="30" height="30"/>
+          <rect x="15" y="15" width="30" height="30" transform="rotate(45 30 30)"/>
+          <circle cx="30" cy="30" r="4"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="240" height="240" fill="url(#star)"/>
+  </svg>
+
+  <div class="wrap">
+    <h1 class="reveal">Mardon<span class="surname">Rahmatullayev</span></h1>
+    <p class="tagline reveal">Veb dasturchi. <strong>PHP</strong> va <strong>Laravel</strong> bilan saytlarning ichki qismini quraman, <strong>JavaScript</strong> bilan uni jonlantiraman.</p>
+    <div class="hero-actions reveal">
+      <a class="btn btn-solid" href="#aloqa">Bogʻlanish</a>
+      <a class="btn btn-ghost" href="#loyihalar">Loyihalarni koʻrish</a>
     </div>
   </div>
 </header>
 
-<style>
-  /* Pro Version Styles */
-  body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f9;
-    color: #333;
-  }
+<hr class="rule">
 
-  header {
-    background: linear-gradient(135deg, #4e54c8, #8f94fb);
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-  }
+<section id="men-haqimda">
+  <div class="wrap split">
+    <h2>Men haqimda</h2>
+    <div class="prose">
+      <p>Menman Mardon Rahmatullayev. Dasturlashni maktab yillarida boshlaganman va ikki yildan beri haqiqiy loyihalar ustida ishlayman — kichik biznes saytlaridan tortib maʻlumotlar bazasi bilan ishlaydigan ichki tizimlargacha.</p>
+      <p>Ishimning asosiy qismi backend: Laravel'da API va admin panellar yozaman, MySQL'da maʻlumotlar tuzilmasini loyihalayman. Frontend tomonida esa toza HTML, CSS va JavaScript bilan interfeysni yigʻaman.</p>
+      <p>Har bir loyihada kodni tushunarli va keyinchalik oson kengaytiriladigan qilib yozishga harakat qilaman.</p>
 
-  header h1 {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
-  }
-
-  header p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-
-  .cta {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #ff6f61;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
-  }
-
-  .cta:hover {
-    background: #ff3b2f;
-  }
-
-  .social-icons {
-    margin-top: 20px;
-  }
-
-  .social-icons a {
-    margin: 0 10px;
-    color: white;
-    font-size: 1.5rem;
-    transition: transform 0.3s;
-  }
-
-  .social-icons a:hover {
-    transform: scale(1.2);
-  }
-
-  footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-  }
-
-  footer p {
-    margin: 0;
-  }
-
-  footer a {
-    color: #ff6f61;
-    text-decoration: none;
-  }
-
-  footer a:hover {
-    text-decoration: underline;
-  }
-</style>
-
-<section id="about" data-animate>
-  <h2>Men haqimda</h2>
-  <section id="experience" class="timeline-section">
-   
-    <div class="timeline">
-      <div class="timeline-item blue">
-        <div class="timeline-icon">🎓</div>
-        <div class="timeline-content">
-          <h3>Online Kurslar</h3>
-          <p>1.5 yil davomida amaliy o‘rganish va real loyihalar.</p>
-          <span class="date">2023 – 2024</span>
-        </div>
-      </div>
-  
-      <div class="timeline-item purple">
-        <div class="timeline-icon">💼</div>
-        <div class="timeline-content">
-          <h3>IT Park Amaliyot</h3>
-          <p>Backend va frontend bo‘yicha amaliyot davom ettirmoqda.</p>
-          <span class="date">2025 – Hozir</span>
-        </div>
-      </div>
-  
-      <div class="timeline-item green">
-        <div class="timeline-icon">🏆</div>
-        <div class="timeline-content">
-          <h3>Proyekt yutug‘i</h3>
-          <p>Startup va mustaqil loyihalar orqali yutuqlar.</p>
-          <span class="date">2024</span>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <style>
-  /* Timeline Block */
-  .timeline-section { padding: 80px 20px; max-width: 900px; margin:auto; }
-  .timeline { position: relative; padding-left: 24px; border-left: 3px solid #ddd; }
-  .timeline-item {
-    position: relative; margin-bottom: 30px;
-    opacity: 0; transform: translateY(30px);
-    transition: 0.6s ease-out;
-  }
-  .timeline-item.active { opacity:1; transform: translateY(0); }
-  .timeline-icon {
-    position: absolute; left: -41px; top: 0;
-    width: 32px; height: 32px; border-radius: 50%;
-    background: #999; display: flex;
-    align-items:center; justify-content:center;
-    font-size:1.2rem; color:#fff;
-  }
-  .timeline-content { background:#fff; padding:16px 20px; border-radius:12px; box-shadow:0 8px 16px rgba(0,0,0,0.08); }
-  .timeline-content h3 { margin-bottom:6px; font-size:1.3rem; }
-  .timeline-content .date { display:block; margin-top:8px; font-size:0.9rem; color:#555; }
-  
-  /* Ranglar */
-  .timeline-item.blue .timeline-icon { background:#3b82f6; }
-  .timeline-item.purple .timeline-icon { background:#8b5cf6; }
-  .timeline-item.green .timeline-icon { background:#22c55e; }
-  
-  /* Responsive */
-  @media(max-width:600px){ .timeline { padding-left: 18px; } }
-  </style>
-  
-  <script>
-  // Scroll animatsiyalar
-  const tlItems = document.querySelectorAll('.timeline-item');
-  const tlObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
-  }, { threshold: 0.2 });
-  tlItems.forEach(item => tlObserver.observe(item));
-  </script>
-  
-</section>
-
-<section id="skills" data-animate>
-  <h2>Ko‘nikmalar</h2>
-  <div class="grid">
-    <div class="card">
-      <div class="card-content">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" style="width: 50px; height: 50px;">
-        <h3>HTML</h3>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-content">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" style="width: 50px; height: 50px;">
-        <h3>CSS</h3>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-content">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" style="width: 50px; height: 50px;">
-        <h3>JavaScript</h3>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-content">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="React" style="width: 50px; height: 50px;">
-        <h3>Mysql</h3>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-content">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="Vue.js" style="width: 50px; height: 50px;">
-        <h3>Php</h3>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-content">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Angular" style="width: 50px; height: 50px;">
-        <h3>laravel</h3>
-      </div>
+      <ul class="facts">
+        <li><dfn>Yosh</dfn><b>16 (2010-yil)</b></li>
+        <li><dfn>Tajriba</dfn><b>2 yil</b></li>
+        <li><dfn>Yoʻnalish</dfn><b>Backend / Full-stack</b></li>
+        <li><dfn>Tillar</dfn><b>Oʻzbek,ingliz (texnik)</b></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section id="projects" data-animate>
-  <h2>Loyihalar</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="./image.png" alt="Socholish.uz">
-      <div class="card-content">
+<hr class="rule">
+
+<section id="konikmalar">
+  <div class="wrap split">
+    <h2>Koʻnikmalar</h2>
+    <dl class="skills">
+      <div class="skill">
+        <dt>PHP</dt>
+        <dd>Server tomonidagi mantiq, formalar, fayllar bilan ishlash</dd>
+        <span class="level">Asosiy</span>
+      </div>
+      <div class="skill">
+        <dt>Laravel</dt>
+        <dd>Eloquent, migratsiyalar, autentifikatsiya, REST API, Blade</dd>
+        <span class="level">Asosiy</span>
+      </div>
+      <div class="skill">
+        <dt>MySQL</dt>
+        <dd>Jadval tuzilmasi, bogʻlanishlar, soʻrovlarni optimallashtirish</dd>
+        <span class="level">Asosiy</span>
+      </div>
+      <div class="skill">
+        <dt>JavaScript</dt>
+        <dd>DOM, fetch bilan API chaqiruvlari, interaktiv elementlar</dd>
+        <span class="level">Yaxshi</span>
+      </div>
+      <div class="skill">
+        <dt>HTML &amp; CSS</dt>
+        <dd>Semantik belgilash, Flexbox va Grid, mobil moslashuv</dd>
+        <span class="level">Yaxshi</span>
+      </div>
+      <div class="skill">
+        <dt>Git</dt>
+        <dd>Versiya nazorati, GitHub, Vercel'ga joylash</dd>
+        <span class="level">Kundalik</span>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="loyihalar">
+  <div class="wrap split">
+    <h2>Loyihalar</h2>
+    <div>
+      <a class="project" href="https://socholish.uz" target="_blank" rel="noopener noreferrer">
         <h3>Socholish.uz</h3>
-        <p>Real loyiha. Backend va frontend ishlari bajarilgan.</p>
-        <span class="badge">Laravel • MySQL</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="./vizitka.jpg" alt="Smartcard">
-      <div class="card-content">
-        <h3>Smartcard</h3>
-        <p>Amaliy loyiha, real biznes ehtiyoji uchun ishlab chiqilgan.</p>
-        <span class="badge">Full Stack</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="./Аннотация 2026-01-28 180911.png" alt="Uzuk.com">
-      <div class="card-content">
-        <h3>Uzuk.com</h3>
-        <p>Web platforma loyihasi, jamoa bilan ishlangan.</p>
-        <span class="badge">Startup</span>
-      </div>
+        <p>Sartaroshxonalar uchun onlayn navbat olish xizmati. Foydalanuvchi usta va qulay vaqtni tanlaydi, admin panelda esa barcha buyurtmalar va jadval boshqariladi.</p>
+        <ul class="stack"><li>Laravel</li><li>PHP</li><li>MySQL</li><li>JavaScript</li></ul>
+        <span class="visit">socholish.uz</span>
+      </a>
+
+      <a class="project" href="https://archivis.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <h3>Archivis</h3>
+        <p>Hujjat va fayllarni tartibli saqlash uchun veb ilova. Qidiruv, kategoriyalar va tez ishlaydigan interfeysga urgʻu berilgan; loyiha Vercel'da joylashtirilgan.</p>
+        <ul class="stack"><li>JavaScript</li><li>HTML</li><li>CSS</li><li>Vercel</li></ul>
+        <span class="visit">archivis.vercel.app</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section id="experience" data-animate>
-  <h2> Ta’lim</h2>
-  <div class="    ">
-    <div class="item">
-            <strong>2026 — Hozir</strong><br/>IT Park — hozirda amaliyot
-    </div>
-    <div class="item">
-      <strong>Online kurslar</strong><br/>1.5 yil davomida amaliy o‘rganish va real loyihalar
+<section class="contact" id="aloqa">
+  <div class="wrap split">
+    <h2>Aloqa</h2>
+    <div>
+      <p class="prose" style="margin-bottom:1.5rem">Loyihangiz bormi yoki shunchaki savol bermoqchimisiz — yozing, tez javob beraman.</p>
+      <ul class="links">
+        <li><a href="tel:+998970748855"><span class="what">Telefon</span><span class="val">+998 97 074 88 55</span></a></li>
+        <li><a href="https://t.me/mardon_7777" target="_blank" rel="noopener noreferrer"><span class="what">Telegram</span><span class="val">@mardon_7777</span></a></li>
+        <li><a href="mailto:mardonrahmatullayev417@gmail.com"><span class="what">Email</span><span class="val">mardonrahmatullayev417@gmail.com</span></a></li>
+        <li><a href="https://instagram.com/mardon_rahmatullayev" target="_blank" rel="noopener noreferrer"><span class="what">Instagram</span><span class="val">@mardon_rahmatullayev</span></a></li>
+      </ul>
+      <footer>© 2026 Mardon Rahmatullayev</footer>
     </div>
   </div>
 </section>
 
-<section id="contact" data-animate>
-  <h2>Aloqa</h2>
-  <p>Email: <a href="mailto:mardonrahmatullayev417@gmail.com">mardonrahmatullayev417@gmail.com</a></p>
-  <p>Telegram: <a href="https://t.me/mardon300" target="_blank" rel="noopener noreferrer">@mardon300</a></p>
-  <p>GitHub: <a href="https://github.com/mardonrahmatullayev" target="_blank" rel="noopener noreferrer">github.com/mardonrahmatullayev</a></p>
-</section>
-
-<footer>
-  <p>© 2026 | Mardon Rahmatullayev. Barcha huquqlar himoyalangan.</p>
-  <p>Made with  Mardon Rahmatullayev</p>
-  <div class="social-icons">
-    <a href="https://github.com/mardonrahmatullayev" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-    <a href="https://t.me/mardon300" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
-    <a href="mailto:mardonrahmatullayev417@gmail.com"><i class="fas fa-envelope"></i></a>
-  </div>
-</footer>
-
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){ entry.target.classList.add('active'); }
-  });
-}, { threshold: 0.15 });
-
-document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-</script>
-<script>
-
-  const btn = document.getElementById("themeBtn");
-  
-  btn.addEventListener("click",()=>{
-  
-    document.body.classList.toggle("dark");
-  
-    if(document.body.classList.contains("dark")){
-      btn.textContent="🌑";
-    }else{
-      btn.textContent="🌕";
-    }
-  
-  });
-  
-  </script>
-
-<script src="//code.jivo.ru/widget/RtFvOxedzP" async></script>
 </body>
 </html>
-
